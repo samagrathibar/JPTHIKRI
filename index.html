@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>जनपद पंचायत ठीकरी, जिला बड़वानी</title>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #0284c7;
+            --dark: #0f172a;
+            --bg-color: #f1f5f9;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --border: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: white;
+            padding: 12px 10px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 1.4rem;
+            margin-bottom: 3px;
+            font-weight: 600;
+        }
+
+        header p {
+            font-size: 0.82rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 15px auto;
+            padding: 0 10px;
+        }
+
+        .section-title {
+            font-size: 1.05rem;
+            color: var(--primary);
+            margin: 18px 0 10px 0;
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 3px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+        }
+
+        /* Top Portals Grid */
+        .ss-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .ss-card {
+            background: var(--card-bg);
+            border-radius: 6px;
+            padding: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-decoration: none;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            border-top: 3px solid var(--secondary);
+            transition: all 0.2s;
+        }
+
+        .ss-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        }
+
+        .ss-card h3 {
+            font-size: 0.95rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .ss-card p {
+            font-size: 0.78rem;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+
+        .ss-btn {
+            background-color: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 5px;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        /* NFBS Compact Box */
+        .nfbs-highlight-box {
+            background: var(--card-bg);
+            border-radius: 6px;
+            padding: 12px 15px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+            border-left: 4px solid #f59e0b;
+            margin-bottom: 15px;
+        }
+
+        .nfbs-highlight-box h3 {
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .nfbs-highlight-box p {
+            font-size: 0.8rem;
+            color: #475569;
+            margin-bottom: 8px;
+        }
+
+        .nfbs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            background: #f8fafc;
+            padding: 8px 10px;
+            border-radius: 4px;
+            border: 1px solid #e2e8f0;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .nfbs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .nfbs-grid h4 {
+            font-size: 0.82rem;
+            color: var(--primary);
+            margin-bottom: 3px;
+            border-bottom: 1px solid #cbd5e1;
+            padding-bottom: 2px;
+        }
+
+        .nfbs-grid ul {
+            padding-left: 14px;
+        }
+
+        .nfbs-grid ul li {
+            font-size: 0.76rem;
+            color: #475569;
+            margin-bottom: 2px;
+            list-style-type: disc;
+        }
+
+        .nfbs-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border);
+            padding-top: 8px;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        /* Schemes & Pension Grid */
+        .marriage-grid, .pension-list-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .marriage-box, .pension-box {
+            background: var(--card-bg);
+            border-radius: 6px;
+            padding: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .marriage-box h4, .pension-box h4 {
+            color: var(--primary);
+            font-size: 0.92rem;
+            margin-bottom: 6px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 4px;
+        }
+
+        .marriage-box p, .marriage-box ul, .pension-box p {
+            font-size: 0.78rem;
+            color: #475569;
+            margin-bottom: 4px;
+        }
+
+        .marriage-box ul {
+            padding-left: 14px;
+            margin-bottom: 4px;
+        }
+
+        .marriage-box ul li {
+            list-style-type: disc;
+            font-size: 0.75rem;
+            margin-bottom: 1px;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 8px;
+            padding-top: 6px;
+            border-top: 1px dashed #cbd5e1;
+        }
+
+        .badge-amt {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+
+        .btn-pdf {
+            background-color: #ef4444;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.72rem;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .btn-pdf:hover {
+            background-color: #dc2626;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: var(--dark);
+            color: white;
+            margin-top: 30px;
+            font-size: 0.78rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🏛️ जनपद पंचायत ठीकरी, जिला बड़वानी</h1>
+        <p>कार्यालयीन उपयोग हेतु समस्त शासकीय पोर्टल एवं सेवाएं</p>
+    </header>
+
+    <div class="container">
+
+        <!-- 1. SOCIAL SECURITY PORTAL MAIN & SCHEMES -->
+        <div class="section-title">🤝 सामाजिक सुरक्षा पोर्टल (socialsecurity.mp.gov.in) मुख्य योजनाएं</div>
+        <div class="ss-grid">
+            <a href="https://socialsecurity.mp.gov.in/" target="_blank" class="ss-card">
+                <div>
+                    <h3>सामाजिक सुरक्षा पेंशन एवं आर्थिक सहायता</h3>
+                    <p>12 सामाजिक सुरक्षा पेंशन योजनाओं के ऑनलाइन क्रियान्वयन, ई-पेमेंट / DBT एवं पात्रता सेवाएं।</p>
+                </div>
+                <div class="ss-btn">पोर्टल खोलें &raquo;</div>
+            </a>
+            <a href="https://socialsecurity.mp.gov.in/nfbs/" target="_blank" class="ss-card">
+                <div>
+                    <h3>राष्ट्रीय परिवार सहायता योजना (NFBS)</h3>
+                    <p>18 से 59 वर्ष आयु वर्ग के कमाऊ सदस्य की मृत्यु होने पर राष्ट्रीय परिवार सहायता हेतु ऑनलाइन प्रणाली.</p>
+                </div>
+                <div class="ss-btn">पोर्टल खोलें &raquo;</div>
+            </a>
+            <a href="https://vivahportal.mp.gov.in/Default.aspx" target="_blank" class="ss-card">
+                <div>
+                    <h3>कन्या विवाह / निकाह (Vivah Portal)</h3>
+                    <p>कन्याओं को विवाह/निकाह में सहायता उपलब्ध कराने के लिये मुख्यमंत्री कन्या विवाह योजना प्रणाली.</p>
+                </div>
+                <div class="ss-btn">पोर्टल खोलें &raquo;</div>
+            </a>
+        </div>
+
+        <!-- 2. NATIONAL FAMILY ASSISTANCE SCHEME (NFBS) -->
+        <div class="section-title">👨‍👩‍👧 राष्ट्रीय परिवार सहायता योजना (NFBS)</div>
+        <div class="nfbs-highlight-box">
+            <h3>राष्ट्रीय परिवार सहायता योजना</h3>
+            <p><em>"गरीबी रेखा के नीचे जीवन-यापन करने वाले परिवारों के ऐसे सदस्य जो कमाऊ सदस्य हो की प्राकृतिक / अप्राकृतिक मृत्यु हो जाने पर पीड़ित परिवार को सामाजिक सुरक्षा प्रदान करने के उद्देश्य से राष्ट्रीय परिवार सहायता योजना अंतर्गत आर्थिक सहायता प्रदान की जाती है।"</em></p>
+            
+            <div class="nfbs-grid">
+                <div>
+                    <h4>पात्रता के मापदंड:</h4>
+                    <ul>
+                        <li>मृतक की आयु 18 से 60 वर्ष के बीच होना अनिवार्य है।</li>
+                        <li>मृतक परिवार का कमाऊ सदस्य रहा हो।</li>
+                        <li>मृतक गरीबी रेखा के नीचे जीवन यापन करने वाले परिवार का सदस्य हो।</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>आवश्यक दस्तावेज:</h4>
+                    <ul>
+                        <li>मृतक का आयु व मृत्यु प्रमाण पत्र</li>
+                        <li>बी.पी.एल. (BPL) कार्ड एवं समग्र/आधार कार्ड</li>
+                        <li>आवेदनकर्ता हितग्राही का पासपोर्ट साइज फोटो (3 फोटो)</li>
+                        <li>बैंक खाता पासबुक की छायाप्रति</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="nfbs-footer">
+                <span class="badge-amt">सहायता राशि: ₹20,000/- (एकमुश्त)</span>
+                <a href="pdfs/nfbs_form.pdf" target="_blank" class="btn-pdf">📄 फॉर्म PDF डाउनलोड</a>
+            </div>
+        </div>
+
+        <!-- 3. MARRIAGE & INCENTIVE SCHEMES -->
+        <div class="section-title">💍 विवाह एवं प्रोत्साहन योजनाएं (पात्रता, दस्तावेज एवं PDF फॉर्म)</div>
+        <div class="marriage-grid">
+
+            <div class="marriage-box">
+                <div>
+                    <h4>मुख्यमंत्री कन्या विवाह / निकाह सहायता योजना</h4>
+                    <p><strong>विवरण:</strong> गरीब, निराश्रित परिवारों की कन्याओं के विवाह/निकाह हेतु आर्थिक सहायता।</p>
+                    <p><strong>पात्रता:</strong> वधु म.प्र. मूल निवासी व BPL परिवार। न्यूनतम आयु 18 वर्ष, वर 21 वर्ष।</p>
+                    <p><strong>दस्तावेज:</strong> समग्र आईडी, आधार, आयु प्रमाण, मूल निवासी, बीपीएल कार्ड, बैंक पासबुक व फोटो।</p>
+                </div>
+                <div class="card-footer">
+                    <span class="badge-amt">शासकीय सहायता</span>
+                    <a href="pdfs/vivah_form.pdf" target="_blank" class="btn-pdf">📄 फॉर्म PDF</a>
+                </div>
+            </div>
+
+            <div class="marriage-box">
+                <div>
+                    <h4>मुख्यमंत्री कल्याणी विवाह योजना</h4>
+                    <p><strong>विवरण:</strong> कल्याणी (विधवा) महिलाओं के पुनर्विवाह को प्रोत्साहित करने हेतु सहायता।</p>
+                    <p><strong>पात्रता:</strong> कल्याणी महिला मध्यप्रदेश की मूल निवासी हो।</p>
+                    <p><strong>दस्तावेज:</strong> मूल निवासी, प्रथम पति का मृत्यु प्रमाण पत्र, आधार, समग्र आईडी, आयु प्रमाण व बैंक पासबुक।</p>
+                </div>
+                <div class="card-footer">
+                    <span class="badge-amt">प्रोत्साहन सहायता</span>
+                    <a href="pdfs/kalyani_vivah_form.pdf" target="_blank" class="btn-pdf">📄 फॉर्म PDF</a>
+                </div>
+            </div>
+
+            <div class="marriage-box">
+                <div>
+                    <h4>मुख्यमंत्री निःशक्त विवाह प्रोत्साहन योजना</h4>
+                    <p><strong>विवरण:</strong> दिव्यांगजन दंपतियों को प्रोत्साहित करने एवं आर्थिक संबल हेतु योजना।</p>
+                    <p><strong>पात्रता:</strong> दंपती में से कोई एक/दोनों 40%+ निःशक्त हों। विवाह के 1 वर्ष के भीतर आवेदन।</p>
+                    <p><strong>दस्तावेज:</strong> मूल निवासी, 40%+ निःशक्तता प्रमाण पत्र / UDID, आयु प्रमाण, संयुक्त फोटो, बैंक पासबुक।</p>
+                </div>
+                <div class="card-footer">
+                    <span class="badge-amt">सहायता: ₹1 से ₹2 लाख</span>
+                    <a href="pdfs/nishakt_vivah_form.pdf" target="_blank" class="btn-pdf">📄 फॉर्म PDF</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 4. 12 PENSION SCHEMES SECTION -->
+        <div class="section-title">📋 सामाजिक सुरक्षा एवं आर्थिक सहायता विभाग की 12 पेंशन योजनाएं</div>
+        <div class="pension-list-grid">
+            
+            <div class="pension-box">
+                <div>
+                    <h4>1. इन्दिरा गांधी राष्ट्रीय वृद्धावस्था पेंशन</h4>
+                    <p><strong>पात्रता:</strong> म.प्र. मूल निवासी, आयु 60 वर्ष+, BPL निराश्रित।</p>
+                    <p><strong>दस्तावेज:</strong> 3 फोटो, आयु प्रमाण, BPL कार्ड, समग्र आईडी, बैंक पासबुक।</p>
+                </div>
+                <div class="card-footer">
+                    <span class="badge-amt">₹600/- माह</span>
+                    <a href="pdfs/indira_gandhi_vridhh_pension.pdf" target="_blank" class="btn-pdf">📄 PDF</a>
+                </div>
+            </div>
+
+            <div class="pension-box">
+                <div>
+                    <h4>2. इन्दिरा गांधी राष्ट्रीय विधवा पेंशन</h4>
+                    <p><strong>पात्रता:</strong> आवेदिका म.प्र. मूल निवासी, आयु 40-79 वर्ष, BPL।</p>
+                    <p><strong>दस्तावेज:</strong> 3 फोटो, पति मृत्यु प्रमाण पत्र, BPL कार्ड, समग्र आईडी, बैंक पासबुक।</p>
+                </div>
+                <div class="card-footer">
+                    <span class="badge-amt">₹600/- माह</span>
+                    <a href="pdfs/indira_gandhi_vidhwa_pension.pdf" target="_blank" class="btn-pdf">📄 PDF</a>
+                </div>
+            </div>
+
+            <div class="pension-box">
+                <div>
+                    <h4>3. इन्दिरा गांधी राष्ट्रीय विकलांगता पेंशन</h4>
+                    <p><strong>पात्रता:</strong> म.प्र. मूल निवासी, आयु 18-79 वर्ष, BPL, 80%+ निःशक्तता।</p>
+                    <p><strong>दस्तावेज:</strong> 3 फोटो, UDID प्रमाण पत्र, BPL कार्ड, समग्र आईडी, बैंक पासबुक।</p>
+                </div>
+                <div class="card-footer">
+                    <span class="badge-amt">₹600/- माह</span>
+                    <a href="pdfs/indira_gandhi_viklang_pension.pdf" target="_blank" class="btn-pdf">📄 PDF</a>
+                </div>
+            </div>
+
+            <div class="pension-box">
+                <div>
+                    <h4>4. बहुविकलांग मानसिक अविकसित निःशक्तजन सहायता</h4>
+                    <p><strong>पात्रता:</strong> 6 वर्ष+, बहुविकलांग/मानसिक अविकसित, 40%+ निःशक्तता।</p>
+                    <p><strong>दस्तावेज:</strong> मूल निवासी, 3 फोटो, आधार, 40%+ निःशक्तता प्रमाण, समग्र आईडी।</p>
+                </div>
+                <div class="card-footer">
+                    <span class="badge-amt">₹600/- माह</span>
+                    <a href="pdfs/bahuviklang_aarthik_sahayata.pdf" target="_blank" class="btn-pdf">📄 PDF</a>
+                </div>
+            </div>
+
+            <div class="pension-box">
+                <div>
+                    <h4>5. मुख्यमंत्री कन्या अभिभावक पेंशन योजना</h4>
+                    <p><strong>पात्रता:</strong> आयु 60+ वर्ष, केवल कन्याएं हों (पुत्र न हो), आयकरदाता न हो।</p>
+                    <p><strong>दस्तावेज:</strong> मूल निवासी, पुत्र न होने का प्रमाण, स्वघोषणा, युगल फोटो, समग्र आईडी।</p>
+                </div>
+                <div class="card-footer">
+                    <span class="badge-amt">₹600/- माह</span>
+                    <a href="pdfs/mukhyamantri_kanya_abhibhavak.pdf" target="_blank" class="btn-pdf">📄 PDF</a>
+                </div>
+            </div>
+
+            <div class="pension-box">
+                <div>
+                    <h4>6. वृद्धावस्‍था पेंशन योजना</h4>
+                    <p><strong>पात्रता:</strong> निराश्रित, म.प्र. मूल निवासी, आयु 60 वर्ष+, समग्र पोर्टल दर्ज।</p>
+                    <p><strong>दस्तावेज:</strong> 3 फोटो, आयु प्रमाण, मूल निवासी, निराश्रित प्रमाण पत्र, बैंक पासबुक।</p>
+                </div>
+                <div class="card-footer">
+                    <span class="badge-amt">₹600/- माह</span>
+                    <a href="pdfs/vridhhavastha_pension.pdf" target="_blank" class="btn-pdf">📄 PDF</a>
+                </div>
+            </div>
+
+            <div class="pension-box">
+                <div>
+                    <h4>7. परित्‍यक्‍ता पेंशन</h4>
+                    <p><strong>पात्रता:</strong> म.प्र. मूल निवासी, 18-59 वर्ष आयु, परित्यक्ता महिलाएं (BPL)।</p>
+                    <p><strong>दस्तावेज:</strong> 3 फोटो, आयु प्रमाण, परित्यक्ता प्रमाण पत्र, समग्र आईडी, बैंक पासबुक।</p>
+                </div>
+                <div class="card-footer">
+                    <span class="badge-amt">₹600/- माह</span>
+                    <a href="pdfs/parityakta_pension.pdf" target="_blank" class="btn-pdf">📄 PDF</a>
+                </div>
+            </div>
+
+            <div class="pension-box">
+                <div>
+                    <h4>8. नि:शक्‍त पेंशन योजना</h4>
+                    <p><strong>पात्रता:</strong> म.प्र. मूल निवासी, आयु 18 वर्ष+, निःशक्तता 40% या अधिक।</p>
+                    <p><strong>दस्तावेज:</strong> 3 फोटो, आयु प्रमाण, 40% निःशक्तता प्रमाण/UDID, समग्र आईडी।</p>
+                </div>
+                <div class="card-footer">
+                    <span class="badge-amt">₹600/- माह</span>
+                    <a href="pdfs/nishakt_pension.pdf" target="_blank" class="btn-pdf">📄 PDF</a>
+                </div>
+            </div>
+
+            <div class="pension-box">
+                <div>
+                    <h4>9. दिव्यांग शिक्षा प्रोत्साहन सहायता राशि</h4>
+                    <p><strong>पात्रता:</strong> 6-18 वर्ष दिव्यांग बच्चे, म.प्र. मूल निवासी, 40%+ निःशक्तता।</p>
+                    <p><strong>दस्तावेज:</strong> 3 फोटो, आयु प्रमाण, UDID कार्ड, समग्र आईडी, बैंक पासबुक।</p>
+                </div>
+                <div class="card-footer">
+                    <span class="badge-amt">₹600/- माह</span>
+                    <a href="pdfs/divyang_shiksha_protsahan.pdf" target="_blank" class="btn-pdf">📄 PDF</a>
+                </div>
+            </div>
+
+            <div class="pension-box">
+                <div>
+                    <h4>10. मुख्यमंत्री अविवाहिता पेंशन योजना</h4>
+                    <p><strong>पात्रता:</strong> म.प्र. मूल निवासी, 50 वर्ष+ अविवाहिता महिलाएं, आयकर दाता न हो।</p>
+                    <p><strong>दस्तावेज:</strong> मूल निवासी, समग्र आईडी, आयु प्रमाण, स्व-प्रमाणित घोषणा पत्र।</p>
+                </div>
+                <div class="card-footer">
+                    <span class="badge-amt">₹600/- माह</span>
+                    <a href="pdfs/mukhyamantri_avivahita_pension.pdf" target="_blank" class="btn-pdf">📄 PDF</a>
+                </div>
+            </div>
+
+            <div class="pension-box">
+                <div>
+                    <h4>11. मुख्यमंत्री कल्याणी पेंशन योजना</h4>
+                    <p><strong>पात्रता:</strong> न्यूनतम आयु 18 वर्ष, अन्य पेंशन न हो, आयकरदाता न हो (BPL बंधन नहीं)।</p>
+                    <p><strong>दस्तावेज:</strong> 3 फोटो, पति मृत्यु प्रमाण पत्र, आयु प्रमाण, समग्र आईडी, बैंक पासबुक।</p>
+                </div>
+                <div class="card-footer">
+                    <span class="badge-amt">₹600/- माह</span>
+                    <a href="pdfs/mukhyamantri_kalyani_pension.pdf" target="_blank" class="btn-pdf">📄 PDF</a>
+                </div>
+            </div>
+
+            <div class="pension-box">
+                <div>
+                    <h4>12. वृद्धाश्रम में निवासरत अंत:वासियो को पेंशन</h4>
+                    <p><strong>पात्रता:</strong> निराश्रित, पंजीकृत वृद्धाश्रम निवासी, म.प्र. मूल निवासी, आयु 60 वर्ष+।</p>
+                    <p><strong>दस्तावेज:</strong> 3 फोटो, निराश्रित प्रमाण, आश्रम निवास प्रमाण, समग्र आईडी।</p>
+                </div>
+                <div class="card-footer">
+                    <span class="badge-amt">₹600/- माह</span>
+                    <a href="pdfs/vridhashram_nivasrat_pension.pdf" target="_blank" class="btn-pdf">📄 PDF</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <p>कार्यालय जनपद पंचायत ठीकरी, जिला बड़वानी (म.प्र.) &copy; 2026</p>
+    </footer>
+
+</body>
+</html>
