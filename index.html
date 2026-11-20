@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JPTHIKRI - पंचायत दर्पण एवं समग्र पोर्टल डैशबोर्ड</title>
+  <style>
+    :root {
+      --primary: #1b4332;
+      --primary-light: #2d6a4f;
+      --accent: #d97706;
+      --bg: #f4f7f5;
+      --card-bg: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Noto Sans Devanagari", "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    header.top-bar {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: #fff;
+      padding: 22px 26px;
+      border-radius: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 6px 18px rgba(27, 67, 50, 0.16);
+      margin-bottom: 22px;
+    }
+
+    .header-titles h1 {
+      font-size: 1.55rem;
+      margin-bottom: 4px;
+    }
+
+    .header-titles p {
+      font-size: 0.92rem;
+      opacity: 0.92;
+    }
+
+    .visit-box {
+      background: rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      backdrop-filter: blur(6px);
+      padding: 12px 18px;
+      border-radius: 12px;
+      text-align: right;
+      min-width: 240px;
+    }
+
+    .visit-label {
+      font-size: 0.85rem;
+      opacity: 0.9;
+      display: block;
+    }
+
+    .visit-count {
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: #fde68a;
+    }
+
+    .visit-note {
+      font-size: 0.72rem;
+      opacity: 0.8;
+      display: block;
+      margin-top: 2px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+    }
+
+    .dept-badge {
+      display: inline-block;
+      background: #ecfdf5;
+      color: var(--primary);
+      border: 1px solid #a7f3d0;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      font-size: 0.96rem;
+      margin-bottom: 18px;
+    }
+
+    .btn-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .portal-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      text-decoration: none;
+      background: var(--primary-light);
+      color: #ffffff;
+      font-weight: 600;
+      padding: 12px 16px;
+      border-radius: 10px;
+      transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 2px 6px rgba(45, 106, 79, 0.2);
+      font-size: 0.95rem;
+    }
+
+    .portal-btn:hover {
+      background: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 12px rgba(27, 67, 50, 0.25);
+    }
+
+    .utility-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .utility-box {
+      border: 1px solid var(--border);
+      background: #fafafa;
+      border-radius: 12px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .utility-box h3 {
+      font-size: 1.05rem;
+      color: #111827;
+      margin-bottom: 6px;
+    }
+
+    .utility-box p {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      background: var(--accent);
+      color: #ffffff;
+      font-weight: 700;
+      padding: 11px 16px;
+      border-radius: 9px;
+      font-size: 0.92rem;
+      transition: background-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .download-btn:hover {
+      background: #b45309;
+      transform: translateY(-1px);
+    }
+
+    .info-box {
+      background: #fffbeb;
+      border-left: 4px solid var(--accent);
+      padding: 14px 16px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 16px;
+      padding-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="top-bar">
+      <div class="header-titles">
+        <h1>JPTHIKRI पोर्टल डैशबोर्ड</h1>
+        <p>मध्य प्रदेश पंचायत एवं ग्रामीण विकास सेवाएँ</p>
+      </div>
+      <div class="visit-box" aria-live="polite">
+        <span class="visit-label">कुल वेबसाइट विज़िट (सभी उपयोगकर्ता)</span>
+        <span class="visit-count" id="totalVisitCount">1</span>
+        <span class="visit-note" id="counterModeLabel">काउंटिंग सक्रिय</span>
+      </div>
+    </header>
+
+    <section class="card">
+      <div class="dept-badge">🆔 विभाग 7: समग्र सामाजिक सुरक्षा मिशन (Samagra Portal)</div>
+
+      <h2 class="section-title">MP Panchayat Darpan (पंचायत दर्पण)</h2>
+      <p class="section-desc">
+        ग्राम पंचायतों के कार्यों का मूल्यांकन, नागरिक पोर्टल, निर्माण दर्पण, EPO स्थिति, कार्य प्रगति एवं DSC Signer यूटिलिटी।
+      </p>
+
+      <div class="btn-grid">
+        <a class="portal-btn" href="https://panchayatdarpan.gov.in/" target="_blank" rel="noopener noreferrer">
+          🌐 पंचायत दर्पण मुख्य पोर्टल »
+        </a>
+        <a class="portal-btn" href="https://panchayatdarpan.gov.in/" target="_blank" rel="noopener noreferrer">
+          👥 Citizen Panchayat Darpan »
+        </a>
+        <a class="portal-btn" href="https://panchayatdarpan.gov.in/" target="_blank" rel="noopener noreferrer">
+          🔑 Panchayat Darpan User ID
+        </a>
+        <a class="portal-btn" href="https://panchayatdarpan.gov.in/" target="_blank" rel="noopener noreferrer">
+          📱 Panchayat Darpan App »
+        </a>
+      </div>
+
+      <div class="utility-grid">
+        <div class="utility-box">
+          <div>
+            <h3>✍️ DigitalSignToolInstallerV1.2.2 (.rar)</h3>
+            <p>पंचायत दर्पण पर DSC डिजिटल हस्ताक्षर लगाने हेतु आवश्यक Signer टूल।</p>
+          </div>
+          <a class="download-btn" href="DigitalSignToolInstallerV1.2.2.rar" download>
+            ⬇️ Signer Tool डाउनलोड (.rar)
+          </a>
+        </div>
+
+        <div class="utility-box">
+          <div>
+            <h3>⚙️ aspnetcore-runtime-8.0.0-win-x64 (.rar)</h3>
+            <p>DSC Signer टूल चलाने हेतु आवश्यक Windows x64 Runtime पैकेज।</p>
+          </div>
+          <a class="download-btn" href="aspnetcore-runtime-8.0.0-win-x64.rar" download>
+            ⬇️ Runtime पैकेज डाउनलोड (.rar)
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="card info-box">
+      <strong>विज़िट काउंटर के बारे में महत्वपूर्ण जानकारी:</strong> जब यह फ़ाइल किसी लाइव वेब सर्वर या होस्टिंग पर चलती है, तो हर नए लोड (कंप्यूटर के किसी भी ब्राउज़र या मोबाइल पर खुलने) पर कुल संख्या <strong>1, 2, 3...</strong> करके बढ़ती है। यदि इसे सीधे लोकल फ़ोल्डर (<code>file://</code>) से खोला जाता है, तो यह ब्राउज़र की लोकल मेमोरी से संख्या बढ़ाकर दिखाता है (सभी डिवाइस में एक जैसी वैश्विक संख्या के लिए इसे किसी ऑनलाइन सर्वर/होस्टिंग या CounterAPI से जोड़ना आवश्यक होता है)।
+    </section>
+
+    <footer>
+      JPTHIKRI फ़ोल्डर • पंचायत दर्पण एवं समग्र पोर्टल संसाधन पेज
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      const countEl = document.getElementById("totalVisitCount");
+      const modeEl = document.getElementById("counterModeLabel");
+      const storageKey = "jpthikri_total_visits_v1";
+
+      function getLocalCount() {
+        const current = parseInt(localStorage.getItem(storageKey) || "0", 10);
+        const next = (isNaN(current) ? 0 : current) + 1;
+        localStorage.setItem(storageKey, String(next));
+        return next;
+      }
+
+      const isHttpProtocol =
+        window.location.protocol === "http:" || window.location.protocol === "https:";
+
+      if (!isHttpProtocol) {
+        countEl.textContent = String(getLocalCount());
+        modeEl.textContent = "लोकल ब्राउज़र काउंटर (1, 2, 3...)";
+        return;
+      }
+
+      // लाइव वेब होस्टिंग पर सभी उपयोगकर्ताओं की कुल विज़िट गिनने के लिए (CounterAPI v1)
+      const namespace = encodeURIComponent(window.location.hostname || "jpthikri-portal");
+      const keyName = encodeURIComponent("index_html_visits");
+      const apiUrl = `https://api.counterapi.dev/v1/${namespace}/${keyName}/up`;
+
+      fetch(apiUrl, { cache: "no-store" })
+        .then((res) => {
+          if (!res.ok) throw new Error("Network response was not ok");
+          return res.json();
+        })
+        .then((data) => {
+          if (typeof data.count === "number") {
+            countEl.textContent = data.count.toLocaleString("en-IN");
+            modeEl.textContent = "लाइव कुल विज़िट काउंट सक्रिय";
+          } else {
+            countEl.textContent = String(getLocalCount());
+            modeEl.textContent = "लोकल फ़ॉलबैक काउंटर";
+          }
+        })
+        .catch(() => {
+          countEl.textContent = String(getLocalCount());
+          modeEl.textContent = "ऑफ़लाइन/लोकल फ़ॉलबैक काउंटर";
+        });
+    })();
+  </script>
+</body>
+</html>
