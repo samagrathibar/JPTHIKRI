@@ -3026,6 +3026,147 @@
 
 </div>
 
+
+<!-- Footer Feedback Section Start -->
+<section id="footer-feedback-section" style="max-width: 1360px; margin: 24px auto 14px auto; padding: 0 12px;">
+    <div style="background: #ffffff; border: 1px solid #cbd5e1; border-top: 4px solid #16325c; border-radius: 6px; padding: 14px 16px; box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);">
+        <h3 style="color: #16325c; font-size: 1rem; margin-bottom: 4px;">
+            💬 नागरिक सुझाव एवं फ़ीडबैक (Feedback)
+        </h3>
+        <p style="font-size: 0.78rem; color: #475569; margin-bottom: 12px;">
+            कृपया अपना नाम, मोबाइल नंबर, ईमेल, स्टार रेटिंग और फ़ीडबैक दर्ज करें।
+        </p>
+
+        <style>
+            .footer-star-group {
+                display: inline-flex;
+                flex-direction: row-reverse;
+                justify-content: flex-end;
+                gap: 4px;
+            }
+            .footer-star-group input {
+                display: none;
+            }
+            .footer-star-group label {
+                font-size: 1.55rem;
+                color: #cbd5e1;
+                cursor: pointer;
+                transition: color 0.15s;
+                line-height: 1;
+            }
+            .footer-star-group input:checked ~ label,
+            .footer-star-group label:hover,
+            .footer-star-group label:hover ~ label {
+                color: #f59e0b;
+            }
+        </style>
+
+        <form id="footerFeedbackForm" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="ea4917ac-57d2-4592-a50e-8e01a9df91ca">
+            <input type="hidden" name="subject" value="New Feedback - Janpad Panchayat Thikri Portal">
+            <input type="hidden" name="from_name" value="JP Thikri Portal">
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin-bottom: 10px;">
+                <div>
+                    <label for="ffName" style="display: block; font-size: 0.76rem; font-weight: 700; color: #1e293b; margin-bottom: 4px;">
+                        नाम (Name) *
+                    </label>
+                    <input type="text" id="ffName" name="name" required placeholder="पूरा नाम लिखें"
+                        style="width: 100%; padding: 7px 10px; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 0.8rem;">
+                </div>
+
+                <div>
+                    <label for="ffPhone" style="display: block; font-size: 0.76rem; font-weight: 700; color: #1e293b; margin-bottom: 4px;">
+                        मोबाइल नंबर (Number) *
+                    </label>
+                    <input type="tel" id="ffPhone" name="phone" required pattern="[0-9]{10}" placeholder="10 अंकों का मोबाइल नंबर"
+                        style="width: 100%; padding: 7px 10px; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 0.8rem;">
+                </div>
+
+                <div>
+                    <label for="ffEmail" style="display: block; font-size: 0.76rem; font-weight: 700; color: #1e293b; margin-bottom: 4px;">
+                        ईमेल (Email) *
+                    </label>
+                    <input type="email" id="ffEmail" name="email" required placeholder="example@mail.com"
+                        style="width: 100%; padding: 7px 10px; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 0.8rem;">
+                </div>
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <span style="display: block; font-size: 0.76rem; font-weight: 700; color: #1e293b; margin-bottom: 4px;">
+                    स्टार रेटिंग (Star Rating) *
+                </span>
+                <div class="footer-star-group" role="radiogroup" aria-label="Star Rating">
+                    <input type="radio" id="fstar5" name="rating" value="5" required>
+                    <label for="fstar5" title="5 स्टार - बहुत अच्छा">&#9733;</label>
+
+                    <input type="radio" id="fstar4" name="rating" value="4">
+                    <label for="fstar4" title="4 स्टार - अच्छा">&#9733;</label>
+
+                    <input type="radio" id="fstar3" name="rating" value="3">
+                    <label for="fstar3" title="3 स्टार - सामान्य">&#9733;</label>
+
+                    <input type="radio" id="fstar2" name="rating" value="2">
+                    <label for="fstar2" title="2 स्टार - सुधार आवश्यक">&#9733;</label>
+
+                    <input type="radio" id="fstar1" name="rating" value="1">
+                    <label for="fstar1" title="1 स्टार - असंतुष्ट">&#9733;</label>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <label for="ffMessage" style="display: block; font-size: 0.76rem; font-weight: 700; color: #1e293b; margin-bottom: 4px;">
+                    फ़ीडबैक / सुझाव (Feedback) *
+                </label>
+                <textarea id="ffMessage" name="message" rows="2" required placeholder="अपना फ़ीडबैक या सुझाव लिखें..."
+                    style="width: 100%; padding: 7px 10px; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 0.8rem; resize: vertical;"></textarea>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <button type="submit" style="background: #0284c7; color: #ffffff; border: none; padding: 7px 14px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; cursor: pointer;">
+                    फ़ीडबैक भेजें
+                </button>
+                <span id="ffStatus" style="font-size: 0.78rem; font-weight: 600;"></span>
+            </div>
+        </form>
+    </div>
+</section>
+
+<script>
+(function () {
+    const form = document.getElementById("footerFeedbackForm");
+    const statusEl = document.getElementById("ffStatus");
+    if (!form) return;
+
+    form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        statusEl.style.color = "#0284c7";
+        statusEl.textContent = "भेजा जा रहा है...";
+
+        const formData = new FormData(form);
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData
+            });
+            const result = await response.json();
+            if (result.success) {
+                statusEl.style.color = "#15803d";
+                statusEl.textContent = "धन्यवाद! आपका फ़ीडबैक सफलतापूर्वक दर्ज हो गया है।";
+                form.reset();
+            } else {
+                statusEl.style.color = "#dc2626";
+                statusEl.textContent = result.message || "भेजने में समस्या आई, कृपया पुनः प्रयास करें।";
+            }
+        } catch (err) {
+            statusEl.style.color = "#dc2626";
+            statusEl.textContent = "नेटवर्क त्रुटि, कृपया इंटरनेट जांचकर पुनः प्रयास करें।";
+        }
+    });
+})();
+</script>
+<!-- Footer Feedback Section End -->
+
 <footer>
     <p><strong>कार्यालय जनपद पंचायत ठीकरी, जिला बड़वानी (म.प्र.) &copy; 2026</strong></p>
     <div class="hits-bar">
